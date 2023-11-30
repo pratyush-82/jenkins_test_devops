@@ -1,0 +1,40 @@
+version : "3.3"
+services :
+  web :
+    image : ghcr.io/pratyush-82/node2:latest
+    network_mode: bridge
+    env_file:
+      - .env
+    ports:
+      - "3101:80"
+  server :
+    image : ghcr.io/pratyush-82/node2-ba:latest
+    network_mode: bridge
+    env_file:
+      - .env
+    ports:
+      - "5107:5107"
+
+
+
+#       version: '3'
+# services:
+#   playground-web-db:
+#     image: mongo:4.2.2
+#     environment:
+#       MONGO_INITDB_DATABASE: playground-web
+#     ports:
+#       - 7000:80
+#   hrms-web-frontend:
+#     image: ghcr.io/pratyush-82/node2:latest
+#     environment:
+#       PORT: 3000
+#       PROXY_API: http://playground-web-backend:8080/
+#     ports:
+#       - 7001:90
+#   hrms-web-backend:
+#     image: ghcr.io/pratyush-82/node2-ba":latest
+#     environment:
+#       MONGODB_URI: mongodb://playground-web-db:27017/playground-web
+#     ports:
+#       - 8080:8080
